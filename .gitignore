@@ -36,3 +36,76 @@ yarn-error.log*
 next-env.d.ts
 
 .fake
+
+# .NET build and runtime files
+bin/
+obj/
+*.user
+*.suo
+*.userprefs
+*.cache
+*.nupkg
+*.swp
+*.pidb
+*.pdb
+*.ilk
+*.log
+*.dll
+*.exe
+*.xml
+
+# Visual Studio files
+.vs/
+.vscode/
+*.sln.iml
+*.csproj.user
+*.csproj.*.user
+
+# NuGet packages directory
+packages/
+
+# Local development environment files
+*.local
+
+# ReSharper files
+_ReSharper.*
+*.ReSharper.*
+
+# Rider files
+.idea/
+
+# MSTest test results
+TestResults/
+
+# Azure Functions
+func/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Local History for Visual Studio
+.history/
+
+# Backup files
+*.bak
+*.tmp
+*.temp
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
