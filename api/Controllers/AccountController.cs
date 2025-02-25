@@ -64,7 +64,7 @@ namespace api.Controllers
             }
             catch (Exception ex )
             {
-                _logger.LogError("Accout Register Error ", ex.Message);
+                _logger.LogError(ex, "Accout Register Error: {@Message}", ex.Message);
                 return StatusCode(500, ex.Message);
             }
         }

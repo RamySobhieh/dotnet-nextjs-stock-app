@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Configuration;
 using api.Data;
 using api.Interfaces;
 using api.Models;
@@ -14,17 +15,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-string connectionString = "server=localhost;user=root;password=thutasann2002tts;database=dotnet_stock_db;port=3306;SslMode=none;Allow User Variables=true;";
-string[] allowedOrigin = {"http://localhost:3000", "http://localhost:3001"};
+string[] allowedOrigin = { "http://localhost:3000", "http://localhost:3001" };
 
 // ------ Services
-builder.Services.AddControllers().AddNewtonsoftJson(options => {
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+{
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
 });
-builder.Services.AddDbContext<ApplicationDBContext>(options => {
-    options.UseMySQL(connectionString);
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-builder.Services.AddIdentity<AppUser, IdentityRole>(options => { // Identity Package
+
+builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
+{ // Identity Package
     options.Password.RequireDigit = true;
     options.Password.RequireLowercase = true;
     options.Password.RequireUppercase = true;
@@ -33,14 +37,16 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options => { // Identity Pac
 })
 .AddEntityFrameworkStores<ApplicationDBContext>();
 
-builder.Services.AddAuthentication(options => { // Authentication add service
+builder.Services.AddAuthentication(options =>
+{ // Authentication add service
     options.DefaultAuthenticateScheme =
     options.DefaultChallengeScheme =
     options.DefaultForbidScheme =
     options.DefaultScheme =
     options.DefaultSignInScheme =
     options.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options => {
+}).AddJwtBearer(options =>
+{
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -59,8 +65,10 @@ builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 
 // ------ Cors
-builder.Services.AddCors(options => {
-    options.AddPolicy("myAppCors", policy => {
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("myAppCors", policy =>
+    {
         policy.WithOrigins(allowedOrigin)
         .AllowAnyOrigin()
         .AllowAnyHeader()

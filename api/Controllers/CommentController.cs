@@ -4,7 +4,6 @@ using api.Interfaces;
 using api.Mappers;
 using api.Models;
 using Microsoft.AspNetCore.Mvc;
-using Org.BouncyCastle.Crypto.Signers;
 
 namespace api.Controllers
 {

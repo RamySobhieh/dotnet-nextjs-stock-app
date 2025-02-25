@@ -14,7 +14,7 @@ namespace api.Models
 
         public required string Content { get; set; }
 
-        public DateTime CreatedOn { get; set; } = DateTime.Now;
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
 
         public int? StockId { get; set; }
 

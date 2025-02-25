@@ -4,8 +4,8 @@ This is the Stock FullStack App with DotnetCore and Nextjs and This app will be 
 
 ## Tech Stacks
 
-- Dotnet Core 7
-- MySQL
+- Dotnet Core 8
+- PostgreSQL
 - Entity Framework Core
 - Nextjs (will be page router as app router not working properly w/ c# project :3)
 - Typescript

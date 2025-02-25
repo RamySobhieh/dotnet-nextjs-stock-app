@@ -1,6 +1,5 @@
 using api.Dtos.Stock;
 using api.Models;
-using ZstdSharp.Unsafe;
 
 namespace api.Mappers
 {
